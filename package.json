@@ -1,7 +1,7 @@
 {
   "name": "dumaworksnodeapp",
   "version": "1.0.0",
-  "description": "Todo App for Logged in Users using Nodejs/Express/SQLite",
+  "description": "Rest Api for Logged in Users using Nodejs/Express/Mysql",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
