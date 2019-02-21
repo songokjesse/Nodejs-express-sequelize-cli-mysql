@@ -1,4 +1,4 @@
-FROM Node:8
+FROM node:8
 
 #create an app directory
 WORKDIR /usr/src/app
@@ -15,7 +15,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 5000
 
 CMD [ "npm", "start" ]
 
