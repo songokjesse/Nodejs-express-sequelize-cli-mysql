@@ -59,3 +59,10 @@ typings/
 
 # next.js build output
 .next
+.idea/Nodejs-express-sequelize-cli-mysql.iml
+.idea/dbnavigator.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+yarn.lock
