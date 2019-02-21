@@ -10,7 +10,10 @@
   "author": "jessesongok@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.0.0"
   },
   "dependencies": {
     "bcrypt": "^3.0.4",
