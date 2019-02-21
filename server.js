@@ -5,8 +5,8 @@ const cors = require('cors')
 
 
 // server port number
-const port = process.env.PORT || 5000
-
+const Port = process.env.PORT || 5000
+const Host = process.env.HOST || '0.0.0.0'
 // import  routes
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/users/', usersRouter);
 app.use('/todo/', taskRouter);
-
+http://0.0.0.0
 // erro handlers
 app.use((req, res, next) => {
     const error = new Error("Not found");
@@ -47,6 +47,6 @@ app.use((error, req, res, next) => {
     })
 });
 
-app.listen(port, ()=>{
-    console.log(`server is running on port:`, port)
+app.listen(Port, Host, ()=>{
+    console.log(`server is running on ${Host}: ${Port}`)
 })
