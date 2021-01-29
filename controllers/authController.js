@@ -2,7 +2,7 @@ const db = require('../models/index')
 const jwt = require('jsonwebtoken')
 const  bcrypt  =  require('bcrypt')
 
-const JWT_KEY = "secretkey23456"
+const JWT_KEY = process.env.JWT_KEY
 
 exports.register = function(req, res) {
     const  form_name  =  req.body.name;
