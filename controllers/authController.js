@@ -30,7 +30,7 @@ exports.register = function(req, res) {
                 return res.send(err)
             })
         }else{
-            return res.send({'message': 'Whoops! User already exists '})
+            return res.send({'message': 'Whoops! Error '})
         }
     })
 }
@@ -40,11 +40,40 @@ exports.login = function(req, res) {
     const  email  =  req.body.email;
     const  password  =  req.body.password;
 
-    db.User.findById(req.params.userId).then(user => {
-        res.send(user)
-    }).catch((err) => {
-        console.log('There was an error querying users', JSON.stringify(err))
-        return res.send(err)
+    db.User.find({
+        where: {
+            email: email
+        }
+    }).then((user) =>{
+        if(!user){
+            return res.status(401).send({
+                message: "Authtication Failed"
+            })
+        }
+
+        bcrypt.compare(password, user.password, (error, isMatch)=>{
+
+            if(isMatch && !error){
+                let token = jwt.sign(JSON.parse(JSON.stringify(user)), JWT_KEY)
+                jwt.verify(token, JWT_KEY, (error,data)=>{
+                    console.log(error,data)
+                    if(error){
+                       next(error);
+                    }
+                })
+                res.send({ success: true, token: 'JWT ' + token})
+            } else {
+                res.status(401).send({
+                    success: false,
+                    message: "Authtication Failed"
+                })
+            }
+        })
+      
+    }
+
+    ).catch((e)=>{
+        res.status(400).send(e)
     })
 }
 

@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/users/', usersRouter);
 app.use('/todo/', taskRouter);
-http://0.0.0.0
+
 // erro handlers
 app.use((req, res, next) => {
     const error = new Error("Not found");
