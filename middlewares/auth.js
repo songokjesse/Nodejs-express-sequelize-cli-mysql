@@ -11,8 +11,6 @@ const AuthMiddleware = (req,res,next) =>{
             req.user = user.user
             next()
         })
-    } else {
-        res.status(401)
     }
 
 }
