@@ -29,8 +29,8 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.use(bodyParser.json());
 
 app.use('/', indexRouter);
-app.use('/users/', usersRouter);
-app.use('/todo/', taskRouter);
+app.use('/api/v1/users/', usersRouter);
+app.use('/api/v1/todo/', taskRouter);
 
 // erro handlers
 app.use((req, res, next) => {
