@@ -1,18 +1,21 @@
-const AuthMiddleware = (req,res,next) =>{
-    const authHeader = req.headers.authorization
+const jwt = require('jsonwebtoken')
 
-    if (authHeader){
-        const token = authHeader.split('')[1]
+const AuthMiddleware = (req,res,next)=>{
+    const AuthHeader = req.headers.authorization
+            const token = AuthHeader.split(' ')[1]
 
-        jwt.verify(token, process.env.JWT_KEY, (error,user)=>{
-            if(error){
-                return res.status(403)
-            }
-            req.user = user.user
-            next()
+
+   try {
+        const token = AuthHeader.split(' ')[1]
+        const decoded = jwt.verify(token, process.env.JWT_KEY)
+        req.userId = decoded.email
+        console.log(decode.email)
+        next()
+    } catch(e){
+        res.status(401).send({
+            "Error": "Invalid Token"       
         })
     }
 
 }
-
-export default AuthMiddleware
+module.exports = AuthMiddleware

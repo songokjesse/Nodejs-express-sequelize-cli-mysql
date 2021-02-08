@@ -1,8 +1,10 @@
 const db = require('../models/index')
 
-exports.list_all_users = function(req, res) {
+exports.list_all_users = (req, res)=> {
     return db.User.findAll()
-        .then((users) => res.send(users))
+        .then((users) => {
+            res.send(users)
+        })
         .catch((err) => {
             console.log('There was an error querying users', JSON.stringify(err))
             return res.send(err)

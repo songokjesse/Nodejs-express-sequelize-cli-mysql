@@ -54,14 +54,14 @@ exports.login = function(req, res) {
         bcrypt.compare(password, user.password, (error, isMatch)=>{
 
             if(isMatch && !error){
-                let token = jwt.sign(JSON.parse(JSON.stringify(user)), JWT_KEY)
+                let token = jwt.sign({id: user.id}, JWT_KEY, { expiresIn: '5m' })
                 jwt.verify(token, JWT_KEY, (error,data)=>{
                     console.log(error,data)
                     if(error){
                        next(error);
                     }
                 })
-                res.send({ success: true, token: 'JWT ' + token})
+                res.send({ success: true, token: token})
             } else {
                 res.status(401).send({
                     success: false,
