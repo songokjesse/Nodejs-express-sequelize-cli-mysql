@@ -23,6 +23,9 @@ module.exports = {
   production:
   {
       use_env_variable: "DATABASE_URL",
-      dialect :    "pgsql"
+      dialect :    "pgsql",
+      "dialectOptions": {
+            "ssl": true
+      }
   }
 }
