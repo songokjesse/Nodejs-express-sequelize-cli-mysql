@@ -25,7 +25,10 @@ module.exports = {
       use_env_variable: "DATABASE_URL",
       dialect :    "pgsql",
       "dialectOptions": {
-            "ssl": true
+            "ssl": {
+                  required: true,
+                  rejectUnauthorized: false
+            }
       }
   }
 }
