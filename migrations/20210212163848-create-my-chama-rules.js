@@ -8,8 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      myChamaID: {
-        type: Sequelize.INTEGER
+      myChamaId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {         
+          model: 'myChamaMembers',
+          key: 'id'
+        }
+        
       },
       myChamaMemberNumber: {
         type: Sequelize.INTEGER

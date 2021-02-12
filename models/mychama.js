@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   myChama.associate = function(models) {
     // associations can be defined here
+        myChama.hasMany(models.myChamaMembers, {as: 'myChamaMember'})
   };
   return myChama;
 };

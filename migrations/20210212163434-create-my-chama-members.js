@@ -9,7 +9,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        allowNull: false,
+        references: {        
+          model: 'User',
+          key: 'id'
+        }
+      },
+      myChamaId: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        allowNull: false,
+        references: {        
+          model: 'myChama',
+          key: 'id'
+        }
       },
       IDNumber: {
         type: Sequelize.STRING
