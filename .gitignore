@@ -66,3 +66,6 @@ typings/
 .idea/modules.xml
 .idea/workspace.xml
 yarn.lock
+
+
+.modelPlan
